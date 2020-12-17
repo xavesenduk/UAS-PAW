@@ -24,6 +24,7 @@ class Studio extends BaseController
 
     public function index()
     {
+        // fungsi utama
         $nav = 'index';
         $pinjam = $this->pinjamModel->where('status', 'Meminjam')->findAll();
         $ruang = $this->ruangModel->where('status', 'Menggunakan')->findAll();
