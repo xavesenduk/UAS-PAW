@@ -2,6 +2,13 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8">
+                <?php if (session()->getFlashData('pesan')) : ?>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <?php echo session()->getFlashData('pesan'); ?> <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <?php endif; ?>
                 <div class="card">
                     <div class="card-header card-header-primary">
                         <h4 class="card-title">Penggunaan Ruang / Fasilitas</h4>
@@ -12,6 +19,7 @@
                             <?php
                             if ($idref != '') {
                                 $condition = 'disabled';
+                                $condition2 = 'hidden';
                                 $id = $ruang['id'];
                                 $nama = $ruang['nama'];
                                 $nimnip = $ruang['nimnip'];
@@ -22,11 +30,12 @@
                                 $waktus = $ruang['waktus'];
                             } else {
                                 $condition = '';
+                                $condition2 = '';
                                 $id = '';
                                 $nama = '';
                                 $nimnip = '';
                                 $tujuan = '';
-                                $pic = '';
+                                $pic = $curuser['email'];
                                 $tanggalp = '';
                                 $waktum = '';
                                 $waktus = '';
@@ -63,7 +72,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">PIC Studio</label>
-                                        <input type="text" class="form-control" name="pic" value="<?php echo $curuser['name']; ?>" disabled>
+                                        <input type="text" class="form-control" name="pic" value="<?php echo $pic; ?>" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -89,7 +98,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary pull-right" <?php echo $condition ?>>Kirim Formulir</button>
+                            <button type="submit" class="btn btn-primary pull-right" <?php echo $condition2 ?>>Kirim Formulir</button>
                             <div class="clearfix"></div>
                         </form>
                     </div>

@@ -6,6 +6,7 @@ use App\Models\InventarisModel;
 use App\Models\PinjamModel;
 use App\Models\RuangModel;
 use App\Models\UserModel;
+use CodeIgniter\Validation\Rules;
 
 class Kelola extends BaseController
 {
@@ -24,6 +25,21 @@ class Kelola extends BaseController
 
     public function pinjambaru()
     {
+        if (!$this->validate([
+            'nama' => 'required',
+            'nimnip' => 'required',
+            'barangdanjumlah' => 'required',
+            'kontak' => 'required',
+            'tujuan' => 'required',
+            'tanggalm' => 'required',
+            'tanggals' => 'required',
+            'waktum' => 'required',
+            'waktus' => 'required'
+        ])) {
+            session()->setFlashdata('pesan', 'Data yang dimasukkan tidak lengkap!');
+            return redirect()->to('/studio/kelolapinjam');
+        }
+
         $this->pinjamModel->save([
             'nama' => $this->request->getVar('nama'),
             'nimnip' => $this->request->getVar('nimnip'),
@@ -54,8 +70,20 @@ class Kelola extends BaseController
 
     public function ruangbaru()
     {
+        if (!$this->validate([
+            'nama' => 'required',
+            'nimnip' => 'required',
+            'tujuan' => 'required',
+            'tanggalp' => 'required',
+            'waktum' => 'required',
+            'waktus' => 'required'
+        ])) {
+            session()->setFlashdata('pesan', 'Data yang dimasukkan tidak lengkap!');
+            return redirect()->to('/studio/kelolaruang');
+        }
+
         $curuser = $this->userModel->find(user_id());
-        $getpic = $curuser['name'];
+        $getpic = $curuser['email'];
         $this->ruangModel->save([
             'nama' => $this->request->getVar('nama'),
             'nimnip' => $this->request->getVar('nimnip'),
@@ -84,13 +112,21 @@ class Kelola extends BaseController
 
     public function inventarisbaru()
     {
+        if (!$this->validate([
+            'barang' => 'required',
+            'jumlah' => 'required'
+        ])) {
+            session()->setFlashdata('pesan', 'Data yang dimasukkan tidak lengkap!');
+            return redirect()->to('/studio/kelolainventaris');
+        }
+
         $keterangan = $this->request->getVar('keterangan');
         if ($keterangan == '') {
             $keterangan = '-';
         }
 
         $this->inventarisModel->save([
-            'nimnip' => $this->request->getVar('nimnip'),
+            'barang' => $this->request->getVar('barang'),
             'jumlah' => $this->request->getVar('jumlah'),
             'keterangan' => $keterangan
         ]);

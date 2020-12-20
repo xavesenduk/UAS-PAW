@@ -2,6 +2,13 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8">
+                <?php if (session()->getFlashData('pesan')) : ?>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <?php echo session()->getFlashData('pesan'); ?> <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <?php endif; ?>
                 <div class="card">
                     <div class="card-header card-header-primary">
                         <h4 class="card-title">Peminjaman Barang</h4>
@@ -12,6 +19,7 @@
                             <?php
                             if ($idref != '') {
                                 $condition = 'disabled';
+                                $condition2 = 'hidden';
                                 $id = $pinjam['id'];
                                 $nama = $pinjam['nama'];
                                 $nimnip = $pinjam['nimnip'];
@@ -24,6 +32,7 @@
                                 $waktus = $pinjam['waktus'];
                             } else {
                                 $condition = '';
+                                $condition2 = '';
                                 $id = '';
                                 $nama = '';
                                 $nimnip = '';
@@ -105,7 +114,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary pull-right" <?php echo $condition ?>>Kirim Formulir</button>
+                            <button type="submit" class="btn btn-primary pull-right" <?php echo $condition2 ?>>Kirim Formulir</button>
                             <div class="clearfix"></div>
                         </form>
                     </div>
