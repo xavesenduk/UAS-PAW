@@ -9,3 +9,4 @@ Website untuk proyek ini bisa diakses di [https://paw.xavesenduk.dev](https://pa
 ## Anggota Kelompok 3
 
 Fransiscus Xaverius Senduk - 19021106039
+Anastasya Anggereany Eliana Lumowa - 19021106084
