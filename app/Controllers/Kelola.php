@@ -83,7 +83,7 @@ class Kelola extends BaseController
         }
 
         $curuser = $this->userModel->find(user_id());
-        $getpic = $curuser['email'];
+        $getpic = $curuser['name'];
         $this->ruangModel->save([
             'nama' => $this->request->getVar('nama'),
             'nimnip' => $this->request->getVar('nimnip'),

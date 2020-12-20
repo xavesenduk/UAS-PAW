@@ -35,7 +35,7 @@
                                 $nama = '';
                                 $nimnip = '';
                                 $tujuan = '';
-                                $pic = $curuser['email'];
+                                $pic = $curuser['name'];
                                 $tanggalp = '';
                                 $waktum = '';
                                 $waktus = '';
