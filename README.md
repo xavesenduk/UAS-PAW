@@ -10,3 +10,4 @@ Website untuk proyek ini bisa diakses di [https://paw.xavesenduk.dev](https://pa
 
 Fransiscus Xaverius Senduk - 19021106039
 Anastasya Anggereany Eliana Lumowa - 19021106084
+Monalisa Hana Runtulalo - 19021106034
